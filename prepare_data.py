@@ -19,23 +19,15 @@ class Clean:
             outcome_subtype = []
             for i, row in enumerate(exemples):
                 if i != 0:
-                    # xi = []
-                    # xi.append(row[2])
+                    xi = []
+                    xi.append(outcome_subtype(row[2]))
                     # xi.append(row[3])
                     # xi.append(row[4])
                     # xi.append(row[5])
                     # xi.append(row[6])
                     # xi.append(row[7])
-                    # self.y.append(self.get_classification(row[1]))
+                    self.y.append(self.get_classification(row[1]))
                     # self.x.append(xi)
-
-                    if row[2] != '':
-                        outcome_subtype.append(row[2])
-
-        outcome_subtype = set(outcome_subtype)
-        print(outcome_subtype)
-
-
 
     def get_classification(self, name):
 
@@ -67,8 +59,6 @@ class Clean:
             'In Surgery': 12,
             'Barn': 13,
             'Court/Investigation': 14,
-
-
         }
         return classifier[name]
 
