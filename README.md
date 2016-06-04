@@ -1,4 +1,4 @@
-# shelter_animal
+# Shelter animal
 
 This work aim to present a solution for the kaggle's competition caled ["Shelter Animal Outcomes"](https://www.kaggle.com/c/shelter-animal-outcomes).
 
