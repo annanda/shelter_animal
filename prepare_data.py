@@ -2,9 +2,12 @@ import csv
 
 
 class Clean:
+    '''
+    Prepere the dataset. Clening up the data.
+    '''
 
     x = []
-    y = []
+    y_ = []
 
     def __init__(self, file_path):
         self.read_csv(file_path)
@@ -24,9 +27,6 @@ class Clean:
                     xi.append(row[7])
                     self.y.append(self.get_classification(row[1]))
                     self.x.append(xi)
-
-            print("Esse é o", self.x)
-            print("Esse é o y", self.y)
 
     def get_classification(self, name):
 
