@@ -3,7 +3,7 @@ import csv
 
 class Clean:
     '''
-    Prepere the dataset. Clening up the data.
+    Prepare the dataset. Clening up the data.
     '''
 
     x = []
