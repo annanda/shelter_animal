@@ -20,8 +20,7 @@ class Clean:
             for i, row in enumerate(exemples):
                 if i != 0:
                     xi = []
-                    if row[2] != '':
-                        xi.append(self.outcome_subtype(row[2]))
+                    xi.append(self.outcome_subtype(row[2]))
                     # xi.append(row[3])
                     # xi.append(row[4])
                     # xi.append(row[5])
@@ -60,6 +59,7 @@ class Clean:
             'In Surgery': 12,
             'Barn': 13,
             'Court/Investigation': 14,
+            '': 15
         }
         return classifier[name]
 
