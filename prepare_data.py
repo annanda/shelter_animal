@@ -38,7 +38,9 @@ class Clean:
             'Transfer': 3,
             'Died': 4
         }
-        return classifier[name]
+        y_i = [0, 0, 0, 0, 0]
+        y_i[classifier[name]] = 1
+        return y_i
 
     def outcome_subtype(self, name):
 
@@ -65,3 +67,4 @@ class Clean:
 
 
 cleaned = Clean('train.csv')
+print(cleaned.y_[:10])
