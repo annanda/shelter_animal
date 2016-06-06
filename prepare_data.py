@@ -4,6 +4,7 @@ import csv
 class Clean:
     '''
     Prepare the dataset. Clen up the data.
+    xi = [outcome subtype, animal type, animal sex, castration]
     '''
 
     x = []
@@ -86,7 +87,7 @@ class Clean:
             'Unknown': 3
         }
 
-        type_classifier = {
+        castration = {
             'Neutered': 0,
             'Spayed': 1,
             'Intact': 3,
@@ -96,8 +97,8 @@ class Clean:
         for type in types:
             if type in sex:
                 classifier[0] = sex[type]
-            if type in type_classifier:
-                classifier[1] = type_classifier[type]
+            if type in castration:
+                classifier[1] = castration[type]
         return classifier
 
 
