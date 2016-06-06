@@ -22,7 +22,11 @@ class Clean:
                     xi = []
                     xi.append(self.get_outcome_subtype(row[2]))
                     xi.append(self.get_animal_type(row[3]))
-                    xi.append(self.get_animal_sex(row[4]))
+                    types = self.get_animal_sex(row[4])
+                    # spliting the field SexuponOutcome in two
+                    # one with the animal sex and other with type
+                    for type in types:
+                        xi.append(type)
                     # xi.append(row[5])
                     # xi.append(row[6])
                     # xi.append(row[7])
