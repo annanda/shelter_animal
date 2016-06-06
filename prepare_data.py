@@ -20,14 +20,14 @@ class Clean:
             for i, row in enumerate(exemples):
                 if i != 0:
                     xi = []
-                    xi.append(self.outcome_subtype(row[2]))
-                    # xi.append(row[3])
+                    xi.append(self.get_outcome_subtype(row[2]))
+                    xi.append(self.get_animal_type(row[3]))
                     # xi.append(row[4])
                     # xi.append(row[5])
                     # xi.append(row[6])
                     # xi.append(row[7])
                     self.y_.append(self.get_classification(row[1]))
-                    # self.x.append(xi)
+                    self.x.append(xi)
 
     def get_classification(self, name):
 
@@ -42,7 +42,7 @@ class Clean:
         y_i[classifier[name]] = 1
         return y_i
 
-    def outcome_subtype(self, name):
+    def get_outcome_subtype(self, name):
 
         classifier = {
             'Suffering': 0,
@@ -65,6 +65,14 @@ class Clean:
         }
         return classifier[name]
 
+    def get_animal_type(self, name):
+
+        classifier = {
+            'Dog': 0,
+            'Cat': 1
+        }
+        return classifier[name]
+
 
 cleaned = Clean('train.csv')
-print(cleaned.y_[:10])
+print(cleaned.x[:3])
