@@ -22,7 +22,7 @@ class Clean:
                     xi = []
                     xi.append(self.get_outcome_subtype(row[2]))
                     xi.append(self.get_animal_type(row[3]))
-                    # xi.append(row[4])
+                    xi.append(self.get_animal_sex(row[4]))
                     # xi.append(row[5])
                     # xi.append(row[6])
                     # xi.append(row[7])
@@ -73,6 +73,29 @@ class Clean:
         }
         return classifier[name]
 
+    def get_animal_sex(self, name):
+        types = name.split()
+
+        sex = {
+            'Male': 0,
+            'Female': 1,
+            'Unknown': 3
+        }
+
+        type_classifier = {
+            'Neutered': 0,
+            'Spayed': 1,
+            'Intact': 3,
+            'Unknown': 4
+        }
+        classifier = [3, 4]
+        for type in types:
+            if type in sex:
+                classifier[0] = sex[type]
+            if type in type_classifier:
+                classifier[1] = type_classifier[type]
+        return classifier
+
 
 cleaned = Clean('train.csv')
-print(cleaned.x[:3])
+print(cleaned.x[:8])
