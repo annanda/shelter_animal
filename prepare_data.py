@@ -15,11 +15,11 @@ class Clean:
 
     def read_csv(self, file_path):
         with open(file_path, 'r') as csv_file:
-            exemples = csv.reader(csv_file, delimiter=',')
+            examples = csv.reader(csv_file, delimiter=',')
 
-            outcome_subtype = []
-            for i, row in enumerate(exemples):
-                if i != 0:
+            #outcome_subtype = []
+            for i, row in enumerate(examples):
+                if i != 0: # ignore header
                     xi = []
                     xi.append(self.get_outcome_subtype(row[2]))
                     xi.append(self.get_animal_type(row[3]))
@@ -28,11 +28,17 @@ class Clean:
                     # one with the animal sex and other with type
                     for type in types:
                         xi.append(type)
-                    # xi.append(row[5])
+                    xi.append(self.get_animal_age(row[5]))
                     # xi.append(row[6])
                     # xi.append(row[7])
                     self.y_.append(self.get_classification(row[1]))
                     self.x.append(xi)
+        #     p = []
+        #     for i, row in enumerate(examples):
+        #         if i != 0 and row[5] != '': # ignore header
+                    
+        #     print(p)
+        # exit();
 
     def get_classification(self, name):
 
@@ -79,28 +85,38 @@ class Clean:
         return classifier[name]
 
     def get_animal_sex(self, name):
-        types = name.split()
-
-        sex = {
+        castration, _, sex = name.partition(' ')
+        
+        sexCode = {
             'Male': 0,
-            'Female': 1,
-            'Unknown': 3
-        }
+            'Female': 1
+        }.get(sex, 3);
 
-        castration = {
+        castrationCode = {
             'Neutered': 0,
             'Spayed': 1,
-            'Intact': 3,
-            'Unknown': 4
-        }
-        classifier = [3, 4]
-        for type in types:
-            if type in sex:
-                classifier[0] = sex[type]
-            if type in castration:
-                classifier[1] = castration[type]
-        return classifier
+            'Intact': 3
+        }.get(castration, 4)
 
+        return [sexCode, castrationCode]
+
+    def get_animal_age(self, name):
+        if name is '': return -1
+        
+        how_many, period = name.split()
+                    
+        how_many = int(how_many)
+         # remove plural
+        period = period[:-1] if period.endswith('s') else period
+        
+        daysInPeriod = {
+            'year' : 365,
+            'month': 31,
+            'week' : 7,
+            'day'  : 1
+        }.get(period)
+        
+        return how_many * daysInPeriod
 
 cleaned = Clean('train.csv')
 print(cleaned.x[:8])
