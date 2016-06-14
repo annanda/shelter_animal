@@ -101,7 +101,7 @@ class Clean:
         return [sexCode, castrationCode]
 
     def get_animal_age(self, name):
-        if name is '': return -1
+        if name == '': return -1
         
         how_many, period = name.split()
                     
