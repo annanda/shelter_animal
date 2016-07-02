@@ -51,7 +51,7 @@ class Clean:
         }
         y_i = [0, 0, 0, 0, 0]
         y_i[classifier[name]] = 1
-        return y_i
+        return classifier[name]
 
     def get_outcome_subtype(self, name):
 
@@ -118,5 +118,6 @@ class Clean:
         
         return how_many * daysInPeriod
 
-cleaned = Clean('train.csv')
-print(cleaned.x[:8])
+
+# cleaned = Clean('train.csv')
+# print(cleaned.x[:8])
